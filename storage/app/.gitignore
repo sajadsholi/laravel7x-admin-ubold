@@ -1,5 +1,4 @@
+public/media/*
 !public/media/flags
 !public/media/gateways
-*
-!public/
-!.gitignore
+
