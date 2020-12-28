@@ -50,7 +50,7 @@
                                 {{ $loop->iteration }}
                             </th>
                             <td>
-                                {{ $item->translateOrDefault($global->lang)->name }}
+                                {{ $item->translateOrDefault($global->adminDataLocale)->name }}
                             </td>
                             {{-- priority --}}
                             <td>

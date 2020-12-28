@@ -27,7 +27,7 @@ class AdminRegionController extends Controller
                 ->orderBy('isActive', 'DESC')
                 ->orderBy('priority', 'DESC')
                 ->orderBy('name', 'ASC')
-                ->paginate(config('global')->pagin)
+                ->paginate(config('global')->adminPagin)
                 ->appends([
                     'name' => $request->name
                 ]),

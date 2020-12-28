@@ -33,7 +33,7 @@ class SetWebGlobalVariable
 
         View::share('global', $global);
 
-        $global->dir = 'ltr';
+        $global->webDirection = 'ltr';
 
         config(['global' => $global]);
 

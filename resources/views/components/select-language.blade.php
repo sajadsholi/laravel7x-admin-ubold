@@ -9,7 +9,7 @@
         @foreach ($global->language as $item)
 
 
-        <a class="dropdown-item translate @if($item->language == $global->lang) active @endif" href="javascript:void(0)"
+        <a class="dropdown-item translate @if($item->language == $global->adminDataLocale) active @endif" href="javascript:void(0)"
             data-lang="{{ $item->language }}" data-redirect="{{ $redirect }}">
 
 

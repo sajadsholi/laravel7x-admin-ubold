@@ -101,7 +101,7 @@
                                 {{ $loop->iteration }}
                             </th>
                             <td>
-                                {{ $item->translateOrDefault($global->lang)->question }}
+                                {{ $item->translateOrDefault($global->adminDataLocale)->question }}
                             </td>
                             <td>
                                 @if (Permission::can('editFaq'))

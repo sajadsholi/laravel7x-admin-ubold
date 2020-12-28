@@ -30,7 +30,7 @@
                     <div class='form-group mb-3'>
                         <div class='custom-control custom-checkbox checkbox-orange'>
                             <input type='checkbox' class='custom-control-input' name="mode" id="checkboxMode" value="1"
-                                @if($global->mode== 'dark')
+                                @if($global->adminMode== 'dark')
                             checked
                             @endif>
                             <label class='custom-control-label' for="checkboxMode">dark mode</label>
@@ -43,26 +43,26 @@
                         <label for="selectPagination">@lang('common.selectPagination')</label>
                         <select class="form-control" id="selectPagination" name="pagin">
                             {{-- 15 rows --}}
-                            <option value="15" @if ($global->pagin == 15 )
+                            <option value="15" @if ($global->adminPagin == 15 )
                                 selected
                                 @endif>
                                 15 @lang('common.rows')
                                 (@lang('common.recommended'))
                             </option>
                             {{-- 50 row --}}
-                            <option value="50" @if ($global->pagin == 50 )
+                            <option value="50" @if ($global->adminPagin == 50 )
                                 selected
                                 @endif>
                                 50 @lang('common.rows')
                             </option>
                             {{-- 100 rows --}}
-                            <option value="100" @if ($global->pagin == 100 )
+                            <option value="100" @if ($global->adminPagin == 100 )
                                 selected
                                 @endif>
                                 100 @lang('common.rows')
                             </option>
                             {{-- 500 rows --}}
-                            <option value="500" @if ($global->pagin == 500 )
+                            <option value="500" @if ($global->adminPagin == 500 )
                                 selected
                                 @endif>
                                 500 @lang('common.rows')
@@ -117,7 +117,7 @@
                         <label for="language">@lang('common.language')</label>
                         <select class="form-control" id="language" name="language">
                             @foreach ($global->language as $item)
-                            <option value="{{ $item->language }}" @if ($global->adminLang == $item->language )
+                            <option value="{{ $item->language }}" @if ($global->adminResourceLocale == $item->language )
                                 selected
                                 @endif>
                                 {{ $item->name }}

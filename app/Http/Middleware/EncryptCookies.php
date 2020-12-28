@@ -12,11 +12,11 @@ class EncryptCookies extends Middleware
      * @var array
      */
     protected $except = [
-        'assetPath',
-        'mode',
-        'pagin',
-        'dir',
-        'adminLang',
-        'lang',
+        'adminPagin',
+        'adminMode',
+        'adminDirection',
+        'adminAssetPathKey',
+        'adminResourceLocale',
+        'adminDataLocale',
     ];
 }

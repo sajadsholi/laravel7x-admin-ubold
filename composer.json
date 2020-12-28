@@ -10,7 +10,7 @@
     "require": {
         "php": "^7.2.5",
         "astrotomic/laravel-translatable": "^11.8",
-        "atriatech/media": "^1.5.5",
+        "atriatech/media": "^2.0.0",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",
         "guzzlehttp/guzzle": "^6.3",

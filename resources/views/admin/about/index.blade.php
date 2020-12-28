@@ -31,7 +31,7 @@
                                 <textarea class='form-control ck-editor' id='content' placeholder='content'
                                     name='content' rows="5" cols="5" data-toggle="tooltip"
                                     title="@lang('common.required')"
-                                    required>@if (!empty($about)){!! $about->translateOrDefault($global->lang)->content !!}@else{!! old('content') !!}@endif</textarea>
+                                    required>@if (!empty($about)){!! $about->translateOrDefault($global->adminDataLocale)->content !!}@else{!! old('content') !!}@endif</textarea>
                                 <div class='invalid-feedback'>
                                     @lang('common.invalid-feedback')
                                 </div>

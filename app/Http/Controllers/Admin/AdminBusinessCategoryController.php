@@ -24,7 +24,7 @@ class AdminBusinessCategoryController extends Controller
                 ->name($request->name)
                 ->whereNull('parent_id')
                 ->with('translations')
-                ->paginate(config('global')->pagin)
+                ->paginate(config('global')->adminPagin)
                 ->appends([
                     'name' => $request->name
                 ]),
@@ -126,7 +126,7 @@ class AdminBusinessCategoryController extends Controller
                 ->name($request->name)
                 ->whereNotNull('parent_id')
                 ->with('translations')
-                ->paginate(config('global')->pagin)
+                ->paginate(config('global')->adminPagin)
                 ->appends([
                     'name' => $request->name
                 ]),

@@ -41,7 +41,7 @@
                                                         id='update_message_{{ $item->name }}'
                                                         placeholder='Update Message {{ $item->name }}'
                                                         name='update_message'
-                                                        value="{{ (!empty($item->application_setting->update_message)) ? $item->application_setting->translateOrDefault($global->lang)->update_message : '' }}"
+                                                        value="{{ (!empty($item->application_setting->update_message)) ? $item->application_setting->translateOrDefault($global->adminDataLocale)->update_message : '' }}"
                                                         title="@lang('common.required')" required>
                                                     <div class='invalid-feedback'>
                                                         @lang('common.invalid-feedback')

@@ -28,7 +28,7 @@ class AdminNotificationController extends Controller
                 ->type($request->type)
                 ->deviceId($request->device_id)
                 ->with('device')
-                ->paginate(config('global')->pagin)
+                ->paginate(config('global')->adminPagin)
                 ->appends([
                     'from_date' => $request->from_date,
                     'to_date' => $request->to_date,

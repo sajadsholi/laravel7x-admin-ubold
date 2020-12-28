@@ -31,7 +31,7 @@ class AdminSupportController extends Controller
             ->with('user')
             ->orderBy('status_id', 'ASC')
             ->latest()
-            ->paginate(config('global')->pagin)
+            ->paginate(config('global')->adminPagin)
             ->appends([
                 'ticket_id' => $request->query('ticket_id'),
                 'from_date' => $request->query('from_date'),
@@ -103,7 +103,7 @@ class AdminSupportController extends Controller
                 'js/adminSupportResponse.js',
                 '/libs/moment/moment.min.js',
                 '/libs/jquery-scrollto/jquery.scrollTo.min.js',
-                request()->cookie('assetPath') . '-' . config('global')->dir . '/js/pages/jquery.chat.js',
+                request()->cookie('assetPath') . '-' . config('global')->adminDirection . '/js/pages/jquery.chat.js',
             ]
         ]);
     }

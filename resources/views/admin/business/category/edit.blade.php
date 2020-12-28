@@ -31,7 +31,7 @@
                                         <span class='text-danger'>*</span>
                                     </label>
                                     <input type='text' class='form-control baseName' id='name' placeholder='name'
-                                        name='name' value="{{ old('name' , $businessCategory->translateOrDefault($global->lang)->name) }}"
+                                        name='name' value="{{ old('name' , $businessCategory->translateOrDefault($global->adminDataLocale)->name) }}"
                                         title="@lang('common.required')" required autofocus>
                                     <div class='invalid-feedback'>
                                         @lang('common.invalid-feedback')
@@ -47,7 +47,7 @@
                                         <span class='text-danger'>*</span>
                                     </label>
                                     <input type='text' class='form-control convertNameToLink' id='link'
-                                        placeholder='link' name='link' value="{{ old('link',$businessCategory->translateOrDefault($global->lang)->link) }}"
+                                        placeholder='link' name='link' value="{{ old('link',$businessCategory->translateOrDefault($global->adminDataLocale)->link) }}"
                                         data-can="editBusinessCategory" data-model="BusinessCategoryTranslation" data-action="edit"
                                         data-id="{{ $businessCategory->id }}"
                                         title="@lang('common.required') <br/> @lang('common.unique')" required>
@@ -79,7 +79,7 @@
                                     </label>
                                     <input type='text' class='form-control' id='meta_title' placeholder='title'
                                         name='meta_title'
-                                        value="{{ old('meta_title' , $businessCategory->translateOrDefault($global->lang)->meta_title) }}"
+                                        value="{{ old('meta_title' , $businessCategory->translateOrDefault($global->adminDataLocale)->meta_title) }}"
                                         title="@lang('common.required')" required>
                                     <div class='invalid-feedback'>
                                         @lang('common.invalid-feedback')
@@ -96,7 +96,7 @@
                                     <select class='form-control keywords-select' id='meta_keywords'
                                         name='meta_keywords[]' title="@lang('common.required')"
                                         data-placeholder="@lang('common.select')" multiple='multiple' required>
-                                        @if ($keywords = explode(",", $businessCategory->translateOrDefault($global->lang)->meta_keywords))        
+                                        @if ($keywords = explode(",", $businessCategory->translateOrDefault($global->adminDataLocale)->meta_keywords))        
                                         @foreach (old('meta_keywords', $keywords) as $keyword)
                                         <option value="{{ $keyword }}" selected>{{ $keyword }}</option>
                                         @endforeach
@@ -116,7 +116,7 @@
                                     </label>
                                     <textarea class='form-control' id='meta_description' placeholder='description'
                                         name='meta_description' title="@lang('common.required')" rows='5' cols='5'
-                                        required>{{ old('meta_description' , $businessCategory->translateOrDefault($global->lang)->meta_description) }}</textarea>
+                                        required>{{ old('meta_description' , $businessCategory->translateOrDefault($global->adminDataLocale)->meta_description) }}</textarea>
                                     <div class='invalid-feedback'>
                                         @lang('common.invalid-feedback')
                                     </div>

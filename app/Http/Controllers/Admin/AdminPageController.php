@@ -23,7 +23,7 @@ class AdminPageController extends Controller
             'pages' => Page::latest('priority')
                 ->name($request->query('name'))
                 ->with('translations')
-                ->paginate(config('global')->pagin)
+                ->paginate(config('global')->adminPagin)
                 ->appends([
                     'name' => $request->query('name')
                 ]),

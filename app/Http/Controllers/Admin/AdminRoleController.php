@@ -22,7 +22,7 @@ class AdminRoleController extends Controller
             'role' => Role::name($request->query('name'))
                 ->where('guard', 'admin')
                 ->latest()
-                ->paginate(config('global')->pagin)
+                ->paginate(config('global')->adminPagin)
                 ->appends([
                     'name' => $request->query('name')
                 ]),

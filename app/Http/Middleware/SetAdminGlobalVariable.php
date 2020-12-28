@@ -38,14 +38,15 @@ class SetAdminGlobalVariable
         }
 
 
+        // get the settings and map them
         $global->setting = Setting::all();
-
         $global->setting->map(function ($item, $key) use ($global) {
 
             $global->setting->{$item->key} = $this->isJson($item->value);
 
             return $item;
         });
+
 
         View::share('global', $global);
 
@@ -59,50 +60,36 @@ class SetAdminGlobalVariable
     private function setConfig($global, $request)
     {
 
-        $global->language = Language::latest('is_default')->latest('priority')->with('media')->get();
+        // get languages from database
+        $global->language = Language::latest('is_default')
+            ->latest('priority')
+            ->with('media')
+            ->get();
 
-        // set cookie
-        if (!$request->hasCookie('assetPath')) {
-            $this->setMyCookie('assetPath', "asset-dark");
-        }
-        if (!$request->hasCookie('mode')) {
-            $this->setMyCookie('mode', 'dark');
-        }
-        if (!$request->hasCookie('pagin')) {
-            $this->setMyCookie('pagin', 15);
-        }
-        if (!$request->hasCookie('dir')) {
-            $this->setMyCookie('dir', $global->language->where('is_default', 1)->first()->direction);
-        }
-        if (!$request->hasCookie('adminLang')) {
-            $this->setMyCookie('adminLang', $global->language->where('is_default', 1)->first()->language);
-        }
-        if (!$request->hasCookie('lang')) {
-            $this->setMyCookie('lang', $global->language->where('is_default', 1)->first()->language);
-        }
-
-        $global->assetPath = asset('asset') . "/admin/" . $request->cookie('assetPath') . '-' . $request->cookie('dir');
-        $global->mode = $request->cookie('mode');
-        $global->pagin = $request->cookie('pagin');
-        $global->dir = $request->cookie('dir');
-        $global->adminLang = $request->cookie('adminLang');
-        $global->lang = $request->cookie('lang');
-
-        config(['app.locale' => $global->adminLang]);
-
-        config(['translatable.locales' => $global->language->pluck('language')->toArray()]);
-        config(['translatable.locale' => $global->lang]);
-        config(['translatable.fallback_locale' => $global->language->where('is_default', 1)->first()->language]);
-
+        // set cookies and global variables
+        $global->adminPagin = (!$request->hasCookie('adminPagin')) ? $this->setMyCookie('adminPagin', 15) : $request->cookie('adminPagin');
+        $global->adminMode = (!$request->hasCookie('adminMode')) ? $this->setMyCookie('adminMode', 'dark') : $request->cookie('adminMode');
+        $global->adminDirection = (!$request->hasCookie('adminDirection')) ? $this->setMyCookie('adminDirection', collect($global->language)->where('is_default', 1)->first()->direction) : $request->cookie('adminDirection');
+        $global->adminAssetPathKey = (!$request->hasCookie('adminAssetPathKey')) ? 'asset-dark' : $request->cookie('adminAssetPathKey');
+        $global->assetPath = asset("asset") . "/admin/" . $global->adminAssetPathKey . "-" . $global->adminDirection;
+        $global->adminResourceLocale = (!$request->hasCookie('adminResourceLocale')) ? $this->setMyCookie('adminResourceLocale', collect($global->language)->where('is_default', 1)->first()->language) : $request->cookie('adminResourceLocale');
+        $global->adminDataLocale = (!$request->hasCookie('adminDataLocale')) ? $this->setMyCookie('adminDataLocale', collect($global->language)->where('is_default', 1)->first()->language) : $request->cookie('adminDataLocale');
+        $global->timezone = optional($request->user())->timezone ?? 'UTC';
         $global->defaultAvatar = asset('asset') . '/defaultAvatar.png';
         $global->defaultLogo = asset('asset') . '/defaultLogo.png';
         $global->noImage = asset('asset') . '/noImage.png';
+
+        config(['app.locale' => $global->adminResourceLocale]);
+        config(['translatable.locales' => collect($global->language)->pluck('language')->toArray()]);
+        config(['translatable.locale' => $global->adminDataLocale]);
+        config(['translatable.fallback_locale' => collect($global->language)->where('is_default', 1)->first()->language]);
     }
 
 
     private function setMyCookie($name, $value, $min = 525600)
     {
-        return Cookie::queue(Cookie::make($name, $value, $min));
+        Cookie::queue(Cookie::make($name, $value, $min));
+        return $value;
     }
 
     private function isJson($value)

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ config('app.locale') }}" dir="{{ $global->dir }}" mode="{{ $global->mode }}">
+<html lang="{{ config('app.locale') }}" dir="{{ $global->adminDirection }}" mode="{{ $global->adminMode }}">
 @php
 $ver = "0.0.1";
 @endphp

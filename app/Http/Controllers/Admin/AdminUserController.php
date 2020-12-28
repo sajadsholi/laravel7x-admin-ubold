@@ -23,7 +23,7 @@ class AdminUserController extends Controller
             ->toDate($request->query('to_date'))
             ->orderBy('isActive', 'DESC')
             ->orderBy('id', 'DESC')
-            ->paginate(config('global')->pagin)
+            ->paginate(config('global')->adminPagin)
             ->appends([
                 'fullname' => $request->query('fullname'),
                 'mobile' => $request->query('mobile'),

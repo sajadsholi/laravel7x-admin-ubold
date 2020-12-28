@@ -25,7 +25,7 @@ class AdminCountryController extends Controller
                 ->orderBy('priority', 'DESC')
                 ->orderBy('name', 'ASC')
                 ->with('media')
-                ->paginate(config('global')->pagin)
+                ->paginate(config('global')->adminPagin)
                 ->appends([
                     'name' => $request->name
                 ]),

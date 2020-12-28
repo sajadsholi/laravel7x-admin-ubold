@@ -26,7 +26,7 @@ class AdminController extends Controller
             ->isActive($request->query('isActive'))
             ->latest('id')
             ->with('role')
-            ->paginate(config('global')->pagin)
+            ->paginate(config('global')->adminPagin)
             ->appends([
                 'name' => $request->query('name'),
                 'role_id' => $request->query('role_id'),

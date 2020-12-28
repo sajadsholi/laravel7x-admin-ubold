@@ -24,7 +24,7 @@ class AdminFaqController extends Controller
             'faqs' => Faq::question($request->query('question'))
                 ->latest('priority')
                 ->with('translations')
-                ->paginate(config('global')->pagin)
+                ->paginate(config('global')->adminPagin)
                 ->appends([
                     'question' => $request->query('question')
                 ]),

@@ -32,7 +32,7 @@
                                 </label>
                                 <input type='text' class='form-control' id='question' placeholder='question'
                                     name='question'
-                                    value="{{ old('question' , $faq->translateOrDefault($global->lang)->question) }}"
+                                    value="{{ old('question' , $faq->translateOrDefault($global->adminDataLocale)->question) }}"
                                     title="@lang('common.required')" required>
                                 <div class='invalid-feedback'>
                                     @lang('common.invalid-feedback')
@@ -49,7 +49,7 @@
                                 <textarea class='form-control' id='answer' placeholder='answer' name='answer'
                                     data-trigger='focus' data-toggle='tooltip' title="@lang('common.required')" cols="5"
                                     rows="5"
-                                    required>{{ old('answer' , $faq->translateOrDefault($global->lang)->answer) }}</textarea>
+                                    required>{{ old('answer' , $faq->translateOrDefault($global->adminDataLocale)->answer) }}</textarea>
                                 <div class='invalid-feedback'>
                                     @lang('common.invalid-feedback')
                                 </div>

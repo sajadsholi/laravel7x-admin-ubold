@@ -30,7 +30,7 @@
                                     <span class='text-danger'>*</span>
                                 </label>
                                 <input type='text' class='form-control' id='name' placeholder='name' name='name'
-                                    value="{{ old('name' , $page->translateOrDefault($global->lang)->name) }}"
+                                    value="{{ old('name' , $page->translateOrDefault($global->adminDataLocale)->name) }}"
                                     title="@lang('common.required')" required>
                                 <div class='invalid-feedback'>
                                     @lang('common.invalid-feedback')
@@ -48,7 +48,7 @@
                                 <textarea class='form-control ck-editor' id='content' placeholder='content'
                                     name='content' data-toggle='tooltip' data-trigger='focus'
                                     title="@lang('common.required')" rows='5' cols='5'
-                                    require>{!! old('content',$page->translateOrDefault($global->lang)->content) !!}</textarea>
+                                    require>{!! old('content',$page->translateOrDefault($global->adminDataLocale)->content) !!}</textarea>
                                 <div class='invalid-feedback'>
                                     @lang('common.invalid-feedback')
                                 </div>
