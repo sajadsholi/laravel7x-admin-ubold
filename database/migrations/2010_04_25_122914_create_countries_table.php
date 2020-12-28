@@ -17,9 +17,12 @@ class CreateCountriesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('code')->nullable();
+            $table->string('lang')->nullable();
             $table->string('phone_code')->nullable();
-            $table->bigInteger('priority')->default(0);
-            $table->boolean('isActive')->default(1);
+            $table->string("color")->nullable();
+            $table->unsignedBigInteger('priority')->default(0);
+            $table->boolean('is_active')->default(1);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

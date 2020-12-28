@@ -3,12 +3,13 @@
 namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Activitylog\Traits\LogsActivity;
 
 class Region extends Model
 {
     // use plugins here
-    use LogsActivity;
+    use LogsActivity, SoftDeletes;
 
     // Config the model
     protected $guarded = ['id'];

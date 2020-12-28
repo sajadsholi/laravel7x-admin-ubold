@@ -150,7 +150,7 @@ Route::middleware('setAdminGlobalVariable')->prefix('admin')->name('admin.')->gr
 // access lang files in js files
 
 Route::get('/js/lang', function () {
-    $lang = request()->cookie('adminLang');
+    $lang = request()->cookie('adminResourceLocale');
     $files   = glob(resource_path('lang/' . $lang . '/*.php'));
     $strings = [];
     foreach ($files as $file) {

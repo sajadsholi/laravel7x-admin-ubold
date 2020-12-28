@@ -4,12 +4,13 @@ namespace App\Model;
 
 use Atriatech\Media\AtriatechMedia;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Activitylog\Traits\LogsActivity;
 
 class Country extends Model
 {
     // use plugins here
-    use LogsActivity, AtriatechMedia;
+    use LogsActivity, AtriatechMedia, SoftDeletes;
 
     // Config the model
     protected $guarded = ['id'];

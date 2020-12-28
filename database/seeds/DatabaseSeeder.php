@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CitySeederPartTwo::class);
         $this->call(CitySeederPartThree::class);
         $this->call(CitySeederPartFour::class);
-        // $this->call(CitySeederPartFive::class);
+        $this->call(CitySeederPartFive::class);
         $this->call(CitySeederPartSix::class);
 
         $this->call(LanguageSeeder::class);
