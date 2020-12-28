@@ -1,0 +1,92 @@
+<IfModule mod_rewrite.c>
+
+RewriteEngine On
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteRule ^(.*)$ /public/$1 [L,QSA]
+
+</IfModule>
+
+#Disable index view
+options -Indexes
+
+#hide a Specifuc File
+
+<Files .env>
+order allow,deny
+Deny from all
+</Files>
+
+<Files .editorconfig>
+order allow,deny
+Deny from all
+</Files>
+
+<Files .env.example>
+order allow,deny
+Deny from all
+</Files>
+
+<Files .env.backup>
+order allow,deny
+Deny from all
+</Files>
+
+<Files .gitattributes>
+order allow,deny
+Deny from all
+</Files>
+
+<Files .gitignore>
+order allow,deny
+Deny from all
+</Files>
+
+<Files .rnd>
+order allow,deny
+Deny from all
+</Files>
+
+<Files .styleci.yml>
+order allow,deny
+Deny from all
+</Files>
+
+<Files artisan>
+order allow,deny
+Deny from all
+</Files>
+
+<Files composer.json>
+order allow,deny
+Deny from all
+</Files>
+
+<Files composer.lock>
+order allow,deny
+Deny from all
+</Files>
+
+<Files package-lock.json>
+order allow,deny
+Deny from all
+</Files>
+
+<Files package.json>
+order allow,deny
+Deny from all
+</Files>
+
+<Files phpunit.xml>
+order allow,deny
+Deny from all
+</Files>
+
+<Files server.php>
+order allow,deny
+Deny from all
+</Files>
+
+<Files webpack.mix.js>
+order allow,deny
+Deny from all
+</Files>
