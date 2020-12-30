@@ -40,6 +40,10 @@ class SettingSeeder extends Seeder
                 'key' => 'sourceContactLink',
                 'value' => 'https://atriatech.ir/تماس-با-طراحی-سایت-آتریاتک',
             ],
+            [
+                'key' => 'sourceStartYear',
+                'value' => '2018',
+            ],
         ]);
     }
 }

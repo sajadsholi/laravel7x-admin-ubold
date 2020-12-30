@@ -12,7 +12,7 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-
+    'reCaptchaError' => 'خطای captcha',
     'failed' => 'اطلاعات وارد شده اشتباه می باشد یا حساب کاربری شما غیر فعال شده است',
     'throttle' => 'شما مجاز به وارد شدن تا <span id="seconds">:seconds</span> ثانیه دیگر نمی باشید.',
 

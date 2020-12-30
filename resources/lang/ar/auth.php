@@ -12,7 +12,7 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-
+    'reCaptchaError' => 'ReCaptcha Error',
     'failed' => 'The username or password entered is incorrect Or maybe your account has been disabled',
     'throttle' => 'Too many login attempts. Please try again in <span id="seconds">:seconds</span> seconds.',
 

@@ -48,7 +48,8 @@
             "Atriatech\\Media\\": "vendor/atriatech/media/src/"
         },
         "files": [
-            "app/Helpers/Permission.php"
+            "app/Helpers/Permission.php",
+            "app/Helpers/Captcha.php"
         ],
         "classmap": [
             "database/seeds",

@@ -83,7 +83,7 @@
 
 /*=============common things ================= */
 
-html[lang=fa] *:not(.menu-arrow):not(.fe-menu):not(.fa):not([class*=fe-]):not(.material-icons) {
+html[lang=fa] *:not(.menu-arrow):not(.fe-menu):not(.fa):not([class*=fe-]):not(.material-icons):not(.far):not(.fas) {
     font-family: 'IRANSans' !important;
 }
 
@@ -93,6 +93,15 @@ html[dir=rtl] * {
 
 .left-side-menu-dark .navbar-custom {
     background-color: #36404a !important;
+}
+
+.navbar-custom {
+    border-bottom: 1px solid #f45d22;
+}
+
+.right-bar .rightbar-title {
+    background-color: #36404a !important;
+    border-bottom: 1px solid #f45d22;
 }
 
 ul.pagination {
@@ -108,7 +117,16 @@ ul.pagination {
     cursor: pointer !important;
 }
 
-.left-side-menu-dark table {
+.no-drop {
+    cursor: no-drop !important;
+}
+
+#sidebar-menu>ul>li>ul {
+    padding-left: 10px !important;
+}
+
+.left-side-menu-dark table,
+.left-side-menu-dark .modal-body {
     color: #fff !important;
 }
 
@@ -126,6 +144,16 @@ ul.pagination {
 
 .page-title-box .page-title {
     font-size: 1.1rem !important;
+}
+
+.decreasePadding td,
+.decreasePadding th {
+    padding: 0.85rem 4px !important;
+    vertical-align: unset !important;
+}
+
+.divTableCollapse tr.hide-table-padding td {
+    padding: 0 !important;
 }
 
 
@@ -149,8 +177,16 @@ ul.pagination {
     border-color: #c33e09;
 }
 
-.text-orange {
-    color: #f45d22 !important;
+html[mode=dark] .text-orange {
+    color: #f66b3c !important;
+}
+
+.left-side-menu-dark .left-side-menu #sidebar-menu>ul>li>a {
+    color: #bfbfbf;
+}
+
+html[mode=light] .text-orange {
+    color: #db460a !important;
 }
 
 .checkbox-orange input[type=checkbox]:checked+label::before {
@@ -161,6 +197,11 @@ ul.pagination {
 .radio-orange input[type=radio]:checked+label::before {
     background-color: #f45d22;
     border-color: #f45d22;
+}
+
+.badge-orange {
+    color: #fff;
+    background-color: #f45d22;
 }
 
 
@@ -267,6 +308,11 @@ html[dir=rtl] .select2-search__field {
     box-shadow: 0 0 0 8px rgba(0, 0, 0, 0.278431);
 }
 
+#map,
+#showLocation {
+    z-index: 1;
+}
+
 
 /*================map css =================== */
 
@@ -290,6 +336,24 @@ html[dir=rtl] .select2-search__field {
 
 html[mode=dark] .flatpickr-month {
     color: white !important;
+}
+
+html[mode=dark] body:not(.site-content *),
+html[mode=dark] .table:not(.site-content *) {
+    color: #ffffff !important;
+}
+
+.gal-box {
+    height: 200px !important;
+}
+
+html[mode=light] body,
+html[mode=light] .table {
+    color: #000000 !important;
+}
+
+html[dir=rtl] .flatpickr-time {
+    direction: ltr !important;
 }
 
 
@@ -323,6 +387,18 @@ html[mode=dark] .flatpickr-month {
     width: 100% !important;
 }
 
+.addMoreImage {
+    width: 100%;
+    height: 160px;
+    border: 3px dashed #d4d4d4;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.addMoreImage i {
+    font-size: 50px;
+}
+
 
 /* support */
 
@@ -347,14 +423,173 @@ img[data-src][src] {
     border: 3px solid;
 }
 
-#map {
-    z-index: 1;
-}
-
 
 /* language select */
 
 div.table-responsive {
     height: 100%;
-    overflow-x: unset !important;
+}
+
+
+/* trash  */
+
+.trashButton .trash {
+    background: #fff;
+    width: 14px;
+    height: 16px;
+    display: inline-block;
+    margin: 0 auto;
+    position: relative;
+    -webkit-border-bottom-right-radius: 2px;
+    -webkit-border-bottom-left-radius: 2px;
+    -moz-border-radius-bottomright: 2px;
+    -moz-border-radius-bottomleft: 2px;
+    border-bottom-right-radius: 2px;
+    border-bottom-left-radius: 2px;
+    margin-right: 10px;
+    vertical-align: bottom;
+}
+
+.trashButton .trash .trashIcon {
+    position: absolute;
+    height: 3px;
+    background: #fff;
+    top: -5px;
+    left: -3px;
+    right: -3px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    transform: rotate(0deg);
+    transition: transform 250ms;
+    transform-origin: 19% 100%;
+}
+
+.trashButton .trash .trashIcon:after {
+    content: '';
+    position: absolute;
+    width: 7px;
+    height: 2px;
+    background: #fff;
+    top: -3px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    transform: rotate(0deg);
+    transition: transform 250ms;
+    transform-origin: 19% 100%;
+    left: 7px;
+}
+
+.trashButton .trash i {
+    position: relative;
+    width: 2px;
+    height: 13px;
+    background: #ff6873;
+    display: block;
+    margin: 3px auto;
+    border-radius: 2px;
+}
+
+.trashButton .trash i:after {
+    content: '';
+    width: 2px;
+    height: 13px;
+    background: #ff6873;
+    position: absolute;
+    left: -5px;
+    border-radius: 2px;
+}
+
+.trashButton .trash i:before {
+    content: '';
+    width: 2px;
+    height: 13px;
+    background: #ff6873;
+    position: absolute;
+    right: -5px;
+    border-radius: 2px;
+}
+
+.trashButton:hover .trash .trashIcon,
+.trashButton:focus .trash .trashIcon {
+    transform: rotate(-90deg);
+    transition: transform 250ms;
+}
+
+.trashButton:hover .trash #trashCount,
+.trashButton:focus .trash #trashCount {
+    opacity: 1;
+}
+
+.trashButton {
+    padding-top: 12px;
+    color: #fff !important;
+    font-weight: bold !important;
+}
+
+#trashCount {
+    margin: 2px;
+    opacity: 0;
+    transform: rotate(90deg);
+    display: block;
+}
+
+.reviews-total-score {
+    padding: 1.5rem 1rem;
+    display: grid;
+    grid-template-columns: 6rem 1fr;
+    gap: 1.5rem;
+    grid-gap: 1.5rem;
+}
+
+.reviews-total-score .start {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.reviews-total-score .start .score {
+    background-color: #f45d22;
+    color: #ffffff;
+    font-size: 2.1rem;
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rating-no-bg {
+    background-color: transparent;
+}
+
+.rating {
+    margin-top: 5px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    border-radius: 4px;
+    padding: 0.3rem 0.4rem;
+    font-size: 0.8rem;
+}
+
+.rating .stars {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rating .stars i {
+    margin-left: 0.15rem;
+    margin-right: 0.15rem;
+    font-size: 0.7rem;
+}
+
+.fab-orange,
+.fal-orange,
+.far-orange,
+.fas-orange {
+    color: #f45d22;
 }

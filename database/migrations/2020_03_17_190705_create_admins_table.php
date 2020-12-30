@@ -15,9 +15,9 @@ class CreateAdminsTable extends Migration
     {
         Schema::create('admins', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('role_id')->index()->constrained()->onDelete("SET NULL")->onUpdate("SET NULL");
-            $table->string('firstname');
-            $table->string('lastname');
+            $table->foreignId('role_id')->nullable()->index()->constrained()->onDelete("SET NULL")->onUpdate("SET NULL");
+            $table->string('firstname')->nullable();
+            $table->string('lastname')->nullable();
             $table->string('username')->unique();
             $table->string('password');
             $table->string('contact_number')->nullable();

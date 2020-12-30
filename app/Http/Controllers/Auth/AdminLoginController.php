@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Helpers\Captcha;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Http\Request;
@@ -43,9 +44,11 @@ class AdminLoginController extends Controller
             return $this->sendLockoutResponse($request);
         }
 
+        // check user is human or bot with google captcha
+        $checkCaptcha = Captcha::google_v3($request->recaptcha);
 
         // check the user info
-        if (Auth::guard('admin')->attempt(['username' => $request->username, 'password' => $request->password, 'is_active' => 1], $request->get('remember'))) {
+        if ($checkCaptcha && Auth::guard('admin')->attempt(['username' => $request->username, 'password' => $request->password, 'is_active' => 1], $request->get('remember'))) {
 
             $admin = Auth::guard('admin')->user();
             // log
@@ -58,7 +61,7 @@ class AdminLoginController extends Controller
         $this->incrementLoginAttempts($request);
 
         throw ValidationException::withMessages([
-            'loginError' => __('auth.failed'),
+            'loginError' => (!$checkCaptcha) ? __('auth.reCaptchaError') : __('auth.failed'),
         ]);
     }
 }

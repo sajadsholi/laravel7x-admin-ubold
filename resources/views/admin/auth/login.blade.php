@@ -9,7 +9,7 @@ $ver = "0.0.1";
     <title>Admin Panel - login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="A fully featured admin which can be used to build CRM, CMS, etc." name="description" />
-    <meta content="{{ $global->setting->sourceName }}" name="author" />
+    <meta content="{{ $global->setting->sourceName ?? '' }}" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="robots" content="noindex">
     <meta name="googlebot" content="noindex">
@@ -48,14 +48,20 @@ $ver = "0.0.1";
                                 @csrf
                                 {{-- username --}}
                                 <div class="form-group mb-3">
-                                    <label for="username">@lang('common.username')</label>
+                                    <label for="username">
+                                        @lang('common.username')
+                                        <span class='text-danger'>*</span>
+                                    </label>
                                     <input class="form-control" type="text" name="username" id="username" required
                                         value="{{ old('username') }}" placeholder="Enter username">
                                 </div>
 
                                 {{-- password --}}
                                 <div class="form-group mb-3">
-                                    <label for="password">@lang('common.password')</label>
+                                    <label for="password">
+                                        @lang('common.password')
+                                        <span class='text-danger'>*</span>
+                                    </label>
                                     <div class="input-group">
                                         <input class="form-control" type="password" name="password" id="password"
                                             required placeholder="Enter your password">
@@ -91,6 +97,13 @@ $ver = "0.0.1";
                                 </div>
                                 @endif
 
+                                {{-- recaptcha --}}
+                                @if (env('APP_ENV') == 'production' &&
+                                !empty(env('RECAPTCHA_SITEKEY')) &&
+                                !empty(env('RECAPTCHA_SECRETKEY')))
+                                <input type="hidden" name="recaptcha" id="recaptcha">
+                                @endif
+
                                 <div class="form-group mb-0 text-center">
                                     <button class="btn btn-primary btn-block" type="submit"> @lang('common.login')
                                     </button>
@@ -100,9 +113,9 @@ $ver = "0.0.1";
 
                             <div class="text-center">
                                 <h5 class="mt-3 text-muted">
-                                    <a href="{{ $global->setting->sourceLink }}" target="_blank"
-                                        class="text-blue">{{ $global->setting->sourceName }}</a>
-                                    &copy; 2013 - {{ date('Y') }}</h5>
+                                    <a href="{{ $global->setting->sourceLink ?? '' }}" target="_blank"
+                                        class="text-blue">{{ $global->setting->sourceName ?? '' }}</a>
+                                    &copy; {{ $global->setting->sourceStartYear ?? '' }} - {{ date('Y') }}</h5>
                             </div>
 
                         </div>
@@ -119,6 +132,23 @@ $ver = "0.0.1";
 
     {{-- specific js --}}
     <script src="{{ asset('asset') }}/admin/js/adminLogin.js?ver={{ $ver }}"></script>
+
+    @if (env('APP_ENV') == 'production' &&
+    !empty(env('RECAPTCHA_SITEKEY')) &&
+    !empty(env('RECAPTCHA_SECRETKEY')))
+
+    <script src="https://www.google.com/recaptcha/api.js?render={{ config('services.recaptcha.sitekey') }}"></script>
+    <script>
+        grecaptcha.ready(function() {
+                 grecaptcha.execute('{{ config('services.recaptcha.sitekey') }}', {action: 'login'}).then(function(token) {
+                    if (token) {
+                      document.getElementById('recaptcha').value = token;
+                    }
+                 });
+             });
+    </script>
+
+    @endif
 
 </body>
 
