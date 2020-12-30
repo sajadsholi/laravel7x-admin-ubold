@@ -5,7 +5,7 @@ return array (
   array (
     'country_id' => 'Country Id',
     'id' => 'Id',
-    'isActive' => 'Is Active',
+    'is_active' => 'Is Active',
     'name' => 'Name',
     'priority' => 'Priority',
   ),

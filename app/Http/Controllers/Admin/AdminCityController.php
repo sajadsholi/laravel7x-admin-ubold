@@ -24,7 +24,7 @@ class AdminCityController extends Controller
             'region' => $region,
             'city' => $region->cities()
                 ->name($request->name)
-                ->orderBy('isActive', 'DESC')
+                ->orderBy('is_active', 'DESC')
                 ->orderBy('priority', 'DESC')
                 ->orderBy('name', 'ASC')
                 ->paginate(config('global')->adminPagin)

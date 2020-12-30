@@ -31,7 +31,7 @@
                     {{ $item->created_at ?? '-' }}
                 </td>
                 <td>
-                    @if ($item->isActive)
+                    @if ($item->is_active)
                     @lang('common.active')
                     @else
                     @lang('common.inactive')

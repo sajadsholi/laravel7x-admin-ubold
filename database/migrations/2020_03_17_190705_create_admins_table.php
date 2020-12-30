@@ -15,19 +15,17 @@ class CreateAdminsTable extends Migration
     {
         Schema::create('admins', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('role_id')->index()->constrained()->onDelete("SET NULL")->onUpdate("SET NULL");
             $table->string('firstname');
             $table->string('lastname');
             $table->string('username')->unique();
             $table->string('password');
             $table->string('contact_number')->nullable();
             $table->rememberToken();
-            $table->boolean('isActive')->default(1);
+            $table->boolean('is_active')->default(1);
             $table->integer('lockout_time')->default(20);
-            $table->unsignedBigInteger('role_id')->nullable();
+            $table->string('timezone')->nullable();
             $table->timestamps();
-
-            $table->index('role_id');
-            $table->foreign('role_id')->references('id')->on('roles')->onDelete('SET NULL')->onUpdate('SET NULL');
         });
     }
 

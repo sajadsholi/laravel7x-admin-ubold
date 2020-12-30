@@ -45,7 +45,7 @@ class AdminLoginController extends Controller
 
 
         // check the user info
-        if (Auth::guard('admin')->attempt(['username' => $request->username, 'password' => $request->password, 'isActive' => 1], $request->get('remember'))) {
+        if (Auth::guard('admin')->attempt(['username' => $request->username, 'password' => $request->password, 'is_active' => 1], $request->get('remember'))) {
 
             $admin = Auth::guard('admin')->user();
             // log

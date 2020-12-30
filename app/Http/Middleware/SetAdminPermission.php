@@ -37,7 +37,7 @@ class SetAdminPermission
 
             // abort 403 :: admin is not superadmin and doesnot have any role
             abort(403);
-        } else if ($admin->isActive == 0) {
+        } else if ($admin->is_active == 0) {
 
             // throw out the user from panel
             auth()->guard('admin')->logout();

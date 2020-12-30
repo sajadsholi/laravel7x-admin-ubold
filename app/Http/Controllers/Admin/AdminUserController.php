@@ -18,16 +18,16 @@ class AdminUserController extends Controller
 
         $user = User::name($request->query('fullname'))
             ->mobile($request->query('mobile'))
-            ->isActive($request->query('isActive'))
+            ->isActive($request->query('is_active'))
             ->fromDate($request->query('from_date'))
             ->toDate($request->query('to_date'))
-            ->orderBy('isActive', 'DESC')
+            ->orderBy('is_active', 'DESC')
             ->orderBy('id', 'DESC')
             ->paginate(config('global')->adminPagin)
             ->appends([
                 'fullname' => $request->query('fullname'),
                 'mobile' => $request->query('mobile'),
-                'isActive' => $request->query('isActive'),
+                'is_active' => $request->query('is_active'),
                 'from_date' => $request->query('from_date'),
                 'to_date' => $request->query('to_date'),
             ]);

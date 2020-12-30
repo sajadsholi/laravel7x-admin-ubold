@@ -5,7 +5,7 @@ return array (
   array (
     'code' => 'Code',
     'id' => 'Id',
-    'isActive' => 'Is Active',
+    'is_active' => 'Is Active',
     'name' => 'Name',
     'phone_code' => 'Phone Code',
     'priority' => 'Priority',

@@ -24,13 +24,17 @@ class CreateUsersTable extends Migration
             $table->string('password')->nullable();
             $table->rememberToken();
             $table->string('mobile')->unique()->nullable();
+            $table->string('introducer_mobile')->nullable();
             $table->string('verify_code')->nullable();
-            $table->dateTime('verify_date')->nullable();
-            $table->integer('verify_counter')->default(1);
-            $table->boolean('verify_expire')->default(0);
+            $table->unsignedBigInteger('verify_counter')->default(0);
+            $table->boolean('verify_is_expire')->default(0);
+            $table->dateTime('verify_last_date')->nullable();
+            $table->dateTime('verified_at')->nullable();
             $table->boolean('is_verified')->default(0);
-            $table->boolean('isActive')->default(1);
+            $table->boolean('is_active')->default(1);
+            $table->boolean("password_must_be_change")->default(0);
             $table->dateTime('born_at')->nullable();
+            $table->string('timezone')->nullable();
             $table->timestamps();
         });
     }

@@ -4,7 +4,7 @@ return array (
   'field' => 
   array (
     'id' => 'Id',
-    'isActive' => 'Is Active',
+    'is_active' => 'Is Active',
     'name' => 'Name',
     'priority' => 'Priority',
     'region_id' => 'Region Id',

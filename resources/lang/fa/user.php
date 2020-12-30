@@ -8,7 +8,7 @@ return array (
     'email_verified_at' => 'احراز هویت شدن ایمیل',
     'firstname' => 'نام',
     'fullname' => 'نام و نام خانوادگی',
-    'isActive' => 'آیا فعال هست یا خیر',
+    'is_active' => 'آیا فعال هست یا خیر',
     'is_verified' => 'Is Verified',
     'lastname' => 'نام خانوادگی',
     'mobile' => 'موبایل',

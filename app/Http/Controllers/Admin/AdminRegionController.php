@@ -24,7 +24,7 @@ class AdminRegionController extends Controller
             'country' => $country,
             'region' => $country->regions()
                 ->name($request->name)
-                ->orderBy('isActive', 'DESC')
+                ->orderBy('is_active', 'DESC')
                 ->orderBy('priority', 'DESC')
                 ->orderBy('name', 'ASC')
                 ->paginate(config('global')->adminPagin)

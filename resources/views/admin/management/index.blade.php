@@ -39,15 +39,15 @@
                     </div>
                     {{-- isActive --}}
                     <div class='col-md-3 mt-3 mt-md-1'>
-                        <select class='custom-select select2' id='isActive' name='isActive'
+                        <select class='custom-select select2' id='is_active' name='is_active'
                             data-placeholder="@lang('common.select') @lang('common.role')">
-                            <option value=' ' @if((string)Request::query('isActive')=='' ) selected @endif>
+                            <option value=' ' @if((string)Request::query('is_active')=='' ) selected @endif>
                                 @lang('common.all') @lang('common.status')
                             </option>
-                            <option value='1' @if((string)Request::query('isActive')=='1' ) selected @endif>
+                            <option value='1' @if((string)Request::query('is_active')=='1' ) selected @endif>
                                 @lang('common.active')
                             </option>
-                            <option value='0' @if((string)Request::query('isActive')=='0' ) selected @endif>
+                            <option value='0' @if((string)Request::query('is_active')=='0' ) selected @endif>
                                 @lang('common.inactive')
                             </option>
                         </select>
@@ -113,7 +113,7 @@
                                 @if ($item->id != 1)
                                 <a href="#" data-url="{{ route('admin.management.changeIsActive' , $item) }}"
                                     class="changeIsActive" data-type="select" data-pk="{{ $item->id }}"
-                                    data-name="isActive" data-value="{{ $item->isActive }}"
+                                    data-name="is_active" data-value="{{ $item->is_active }}"
                                     data-title="@lang('common.change') @lang('common.status')"></a>
                                 @else
                                 <span class="text-success">@lang('common.active')</span>

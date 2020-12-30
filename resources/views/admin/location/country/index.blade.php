@@ -152,11 +152,11 @@
                             <td>
                                 @if (Permission::can('editLocation'))
                                 <a href="#" data-url="{{ route('admin.common.changeIsActive') }}" class="changeIsActive"
-                                    data-type="select" data-pk="{{ $item->id }}" data-name="isActive"
-                                    data-model="Country" data-can="editLocation" data-value="{{ $item->isActive }}"
+                                    data-type="select" data-pk="{{ $item->id }}" data-name="is_active"
+                                    data-model="Country" data-can="editLocation" data-value="{{ $item->is_active }}"
                                     data-title="@lang('common.change') @lang('common.status')"></a>
                                 @else
-                                <x-isActive :status="$item->isActive" />
+                                <x-isActive :status="$item->is_active" />
                                 @endif
                             </td>
                             <td>

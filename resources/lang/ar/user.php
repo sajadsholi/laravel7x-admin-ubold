@@ -7,7 +7,7 @@ return array(
     'email_verified_at' => 'Email verified at',
     'firstname' => 'First Name',
     'fullname' => 'Fullname',
-    'isActive' => 'Is Active',
+    'is_active' => 'Is Active',
     'lastname' => 'Last Name',
     'mobile' => 'Mobile',
     'password' => 'Password',

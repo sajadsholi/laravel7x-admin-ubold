@@ -22,7 +22,7 @@ class AdminCommonController extends Controller
 
         $model = "App\Model\\$request->model";
         $model::findOrFail($request->pk)->update([
-            'isActive' => $request->value
+            'is_active' => $request->value
         ]);
     }
 

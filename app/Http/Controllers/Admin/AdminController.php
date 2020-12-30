@@ -23,14 +23,14 @@ class AdminController extends Controller
 
         $admin = Admin::name($request->query('name'))
             ->roleId($request->query('role_id'))
-            ->isActive($request->query('isActive'))
+            ->isActive($request->query('is_active'))
             ->latest('id')
             ->with('role')
             ->paginate(config('global')->adminPagin)
             ->appends([
                 'name' => $request->query('name'),
                 'role_id' => $request->query('role_id'),
-                'isActive' => $request->query('isActive')
+                'is_active' => $request->query('is_active')
             ]);
 
 
@@ -217,7 +217,7 @@ class AdminController extends Controller
         abort_if($request->pk == 1, 403);
 
         Admin::findOrFail($request->pk)->update([
-            'isActive' => $request->value
+            'is_active' => $request->value
         ]);
     }
 }

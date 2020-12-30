@@ -51,7 +51,7 @@ return array(
   'info' => 'Info',
   'inputTooShort' => 'Please enter 3 or more characters',
   'invalid-feedback' => 'Please enter a valid value',
-  'isActive' => 'Active or Not',
+  'is_active' => 'Active or Not',
   'language' => 'language',
   'lastname' => 'Lastname',
   'link' => 'Link',

@@ -26,7 +26,7 @@ class AdminSearchController extends Controller
                 ->where('firstname', 'LIKE', "%$search%")
                 ->orWhere('lastname', 'LIKE', "%$search%")
                 ->orWhere('fullname', 'LIKE', "%$search%")
-                ->where('isActive', 1)
+                ->where('is_active', 1)
                 ->get()
         );
     }
@@ -40,7 +40,7 @@ class AdminSearchController extends Controller
         return response(
             Region::where([
                 'country_id' => $request->country_id,
-                'isActive' => 1
+                'is_active' => 1
             ])
                 ->latest('priority')
                 ->orderBy('name', 'ASC')
@@ -57,7 +57,7 @@ class AdminSearchController extends Controller
         return response(
             City::where([
                 'region_id' => $request->region_id,
-                'isActive' => 1
+                'is_active' => 1
             ])
                 ->latest('priority')
                 ->orderBy('name', 'ASC')

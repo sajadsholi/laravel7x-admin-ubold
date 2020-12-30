@@ -21,7 +21,7 @@ class AdminCountryController extends Controller
         }
         return view('admin.location.country.index', [
             'country' => Country::name($request->name)
-                ->orderBy('isActive', 'DESC')
+                ->orderBy('is_active', 'DESC')
                 ->orderBy('priority', 'DESC')
                 ->orderBy('name', 'ASC')
                 ->with('media')

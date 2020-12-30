@@ -31,10 +31,14 @@ class User extends Authenticatable
 
     // Filters
     //--------
-    public function scopeName($query, $name = null)
+    public function scopeName($query, $name = NULL)
     {
-        if (!is_null($name)) {
-            return $query->Where('firstname', 'LIKE', "%$name%")->orWhere('lastname', 'LIKE', "%$name%")->orWhere('fullname', 'LIKE', "%$name%");
+        if (!empty($name)) {
+            return $query->where(function ($query) use ($name) {
+                $query->orWhere('firstname', 'LIKE', "%$name%")
+                    ->orWhere('lastname', 'LIKE', "%$name%")
+                    ->orWhere('fullname', 'LIKE', "%$name%");
+            });
         }
         return $query;
     }
@@ -42,15 +46,15 @@ class User extends Authenticatable
     public function scopeMobile($query, $mobile = null)
     {
         if (!is_null($mobile)) {
-            return $query->where('mobile', $mobile);
+            return $query->where('mobile', 'LIKE', $mobile);
         }
         return $query;
     }
     //--------
-    public function scopeIsActive($query, $isActive = null)
+    public function scopeIsActive($query, $is_active = null)
     {
-        if (!is_null($isActive)) {
-            return $query->where('isActive', $isActive);
+        if (!is_null($is_active)) {
+            return $query->where('is_active', $is_active);
         }
         return $query;
     }

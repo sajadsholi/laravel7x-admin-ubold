@@ -42,11 +42,11 @@ class Admin extends Authenticatable
         }
         return $query;
     }
-    // ------- isActive
-    public function scopeIsActive($query, $isActive = NULL)
+    // -------
+    public function scopeIsActive($query, $is_active = NULL)
     {
-        if (!is_null($isActive)) {
-            return $query->where('isActive', $isActive);
+        if (!is_null($is_active)) {
+            return $query->where('is_active', $is_active);
         }
         return $query;
     }

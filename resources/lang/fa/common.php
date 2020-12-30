@@ -50,7 +50,7 @@ return array (
   'info' => 'اطلاعات',
   'inputTooShort' => 'لطفا 3 یا چند حرف جهت جستجو وارد کنید',
   'invalid-feedback' => 'لطفا یک مقدار معتبر وارد کنید',
-  'isActive' => 'فعال هست یا نه',
+  'is_active' => 'فعال هست یا نه',
   'language' => 'زبان',
   'lastname' => ' نام و نام خانوادگی',
   'link' => 'لینک',

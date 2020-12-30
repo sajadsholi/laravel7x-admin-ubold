@@ -18,17 +18,17 @@
                         <input type="text" class="form-control" id="mobile" name="mobile"
                             value="{{ Request::query('mobile') }}" placeholder="@lang('user.field.mobile')">
                     </div>
-                    {{-- isActive --}}
+                    {{-- is_active --}}
                     <div class="col-md-4 col-sm-12 mt-2">
-                        <select class="select2" name="isActive">
-                            <option value=" " @if (empty(Request::query('isActive'))) selected @endif>
+                        <select class="select2" name="is_active">
+                            <option value=" " @if (empty(Request::query('is_active'))) selected @endif>
                                 @lang('common.all')
                                 @lang('common.status')
                             </option>
-                            <option value="1" @if (Request::query('isActive')==1) selected @endif>
+                            <option value="1" @if (Request::query('is_active')==1) selected @endif>
                                 @lang('common.active')
                             </option>
-                            <option value="0" @if (Request::query('isActive')=='0' ) selected @endif>
+                            <option value="0" @if (Request::query('is_active')=='0' ) selected @endif>
                                 @lang('common.inactive')
                             </option>
                         </select>
@@ -102,8 +102,8 @@
                             </td>
                             <td>
                                 <a href="#" data-url="{{ route('admin.common.changeIsActive') }}" class="changeIsActive"
-                                    data-type="select" data-pk="{{ $item->id }}" data-name="isActive" data-model="User"
-                                    data-can="user" data-value="{{ $item->isActive }}"
+                                    data-type="select" data-pk="{{ $item->id }}" data-name="is_active" data-model="User"
+                                    data-can="user" data-value="{{ $item->is_active }}"
                                     data-title="@lang('common.change') @lang('common.status')"></a>
                             </td>
                         </tr>
