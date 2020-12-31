@@ -49,7 +49,8 @@
         },
         "files": [
             "app/Helpers/Permission.php",
-            "app/Helpers/Captcha.php"
+            "app/Helpers/Captcha.php",
+            "app/Helpers/Timezone.php"
         ],
         "classmap": [
             "database/seeds",

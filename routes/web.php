@@ -103,6 +103,7 @@ Route::middleware('setAdminGlobalVariable')->prefix('admin')->name('admin.')->gr
         // -------config
         Route::post('config', 'Admin\AdminConfigController@index')->name('config.index');
         Route::post('config/language', 'Admin\AdminConfigController@language')->name('config.language');
+        Route::post('config/timezone', 'Admin\AdminConfigController@timezone')->name('config.timezone');
 
         // -------genral
         Route::get('settings', 'Admin\AdminSettingsController@index')->name('settings.index');
@@ -145,19 +146,19 @@ Route::middleware('setAdminGlobalVariable')->prefix('admin')->name('admin.')->gr
 
         // 
     });
+
+    // access lang files in js files
+
+    Route::get('/js/lang', function () {
+        $lang = request()->cookie('adminResourceLocale');
+        $files   = glob(resource_path('lang/' . $lang . '/*.php'));
+        $strings = [];
+        foreach ($files as $file) {
+            $name           = basename($file, '.php');
+            $strings[$name] = require $file;
+        }
+        header('Content-Type: text/javascript');
+        echo ('window.i18n = ' . json_encode($strings) . ';');
+        exit();
+    })->name('assets.lang');
 });
-
-// access lang files in js files
-
-Route::get('/js/lang', function () {
-    $lang = request()->cookie('adminResourceLocale');
-    $files   = glob(resource_path('lang/' . $lang . '/*.php'));
-    $strings = [];
-    foreach ($files as $file) {
-        $name           = basename($file, '.php');
-        $strings[$name] = require $file;
-    }
-    header('Content-Type: text/javascript');
-    echo ('window.i18n = ' . json_encode($strings) . ';');
-    exit();
-})->name('assets.lang');

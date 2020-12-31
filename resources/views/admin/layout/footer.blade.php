@@ -7,6 +7,12 @@
 </div>
 @endif
 
+@if (Session::has('danger'))
+<div id="failed-msg" class="d-none">
+    <p class="my-2">{{ Session::get('danger') }}</p>
+</div>
+@endif
+
 @if (Session::has('success'))
 <p id="success-msg" class="d-none">
     @if (is_numeric(Session::get('success')))
@@ -27,9 +33,9 @@
 
 {{-- send notification to admin --}}
 <!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-messaging.js"></script>
-<script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-functions.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-messaging.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-functions.js"></script>
 {{-- send notification to admin --}}
 
 
@@ -48,8 +54,12 @@
 <script src="{{ asset('asset') }}/admin/libs/x-editable/js/bootstrap-editable.min.js?ver={{ $ver }}"></script>
 <script src="{{ asset('asset') }}/admin/libs/toaster/build/toastr.min.js?ver={{ $ver }}"></script>
 <script src="{{ asset('asset') }}/admin/libs/ckeditor/ckeditor.js?ver={{ $ver }}"></script>
+<script src="{{ asset('asset') }}/admin/libs/numeral/src/numeral.js?ver={{ $ver }}"></script>
 
 {{-- common js --}}
+
+<script src="{{ asset('asset') }}/admin/js/common.js?ver={{ $ver }}"></script>
+<script src="{{ asset('asset') }}/admin/js/form-wizard.js?ver={{ $ver }}"></script>
 
 {{-- specific js --}}
 @if(!empty($script))
@@ -59,15 +69,17 @@
 @endif
 {{-- specific js --}}
 
-
-<script src="{{ asset('asset') }}/admin/js/common.js?ver={{ $ver }}"></script>
-<script src="{{ asset('asset') }}/admin/js/form-wizard.js?ver={{ $ver }}"></script>
-
-<script src="{{ route('assets.lang') }}?ver={{ $ver }}"></script>
+<script src="{{ route('admin.assets.lang') }}?ver={{ $ver }}"></script>
 {{-- config notification for admin --}}
 @if(env('APP_ENV') == 'production')
 <script src="{{ asset('asset') }}/admin/js/adminNotification.js?ver={{ $ver }}"></script>
 @endif
 {{-- config notification for admin --}}
 <script src="{{ asset('asset') }}/admin/libs/lozad/lozad.js?ver={{ $ver }}"></script>
+
+
+{{-- set the timezone --}}
+<script src="{{ asset('asset') }}/admin/libs/moment/moment.min.js?ver={{ $ver }}"></script>
+<script src="{{ asset('asset') }}/admin/libs/moment/moment-timezone.min.js?ver={{ $ver }}"></script>
+
 @atriatech_media('js')

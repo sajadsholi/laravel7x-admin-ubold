@@ -17,10 +17,11 @@ class AdminSeeder extends Seeder
         DB::table('admins')->delete();
 
         $data = [
-            'firstname' => 'firstname' ,
-            'lastname' => 'lastname' ,
-            'username' => 'admin' ,
-            'password' => Hash::make('123') ,
+            'firstname' => 'firstname',
+            'lastname' => 'lastname',
+            'username' => 'admin',
+            'password' => Hash::make('123'),
+            'lockout_time' => 0,
             // 'role_id' => 1
         ];
 

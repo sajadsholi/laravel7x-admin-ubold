@@ -65,15 +65,16 @@ $ver = '1.0.2';
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-6">
-                        2013 - {{ date('Y') }} &copy;<a href="{{ $global->setting->sourceLink }}" target="_blanck"
-                            class="text-blue" id="source_info">{{ $global->setting->sourceName }}</a>
+                        {{ $global->setting->sourceStartYear ?? '' }} - {{ date('Y') }} &copy;<a
+                            href="{{ $global->setting->sourceLink ?? 'javascript:void(0);' }}" target="_blanck"
+                            class="text-blue" id="source_info">{{ $global->setting->sourceName ?? '' }}</a>
                     </div>
                     <div class="col-md-6">
                         <div class="text-md-right footer-links d-none d-sm-block">
-                            <a href="{{ $global->setting->sourceAboutLink }}" target="_blanck"
+                            <a href="{{ $global->setting->sourceAboutLink ?? 'javascript:void(0);' }}" target="_blanck"
                                 class="mx-2">@lang('aboutUs.singular')</a>
-                            <a href="{{ $global->setting->sourceContactLink }}" target="_blanck"
-                                class="mx-2">@lang('contactUs.singular')</a>
+                            <a href="{{ $global->setting->sourceContactLink ?? 'javascript:void(0);' }}"
+                                target="_blanck" class="mx-2">@lang('contactUs.singular')</a>
                         </div>
                     </div>
                 </div>

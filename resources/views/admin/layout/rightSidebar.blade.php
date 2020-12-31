@@ -1,6 +1,6 @@
 <div class="right-bar">
     <div class="rightbar-title">
-        <a href="javascript:void(0);" class="right-bar-toggle float-right">
+        <a href="javascript:void(0);" class="right-bar-toggle float-right text-orange">
             <i class="dripicons-cross noti-icon"></i>
         </a>
         <h5 class="m-0 text-white">@lang('common.settings')</h5>
@@ -25,15 +25,15 @@
         <div class="p-3">
             <form method="POST" action="{{ route('admin.config.index') }}">
                 @csrf
-                {{-- dark mode --}}
+                {{-- change mode mode --}}
                 <div class='col-md-12 p-0'>
                     <div class='form-group mb-3'>
                         <div class='custom-control custom-checkbox checkbox-orange'>
-                            <input type='checkbox' class='custom-control-input' name="mode" id="checkboxMode" value="1"
-                                @if($global->adminMode== 'dark')
+                            <input type='checkbox' class='custom-control-input' name="adminMode" id="changeAdminMode"
+                                value="1" @if($global->adminMode== 'dark')
                             checked
                             @endif>
-                            <label class='custom-control-label' for="checkboxMode">dark mode</label>
+                            <label class='custom-control-label' for="changeAdminMode">dark mode</label>
                         </div>
                     </div>
                 </div>
@@ -41,33 +41,24 @@
                 <div class="col-md-12 p-0">
                     <div class="form-group mb-3">
                         <label for="selectPagination">@lang('common.selectPagination')</label>
-                        <select class="form-control" id="selectPagination" name="pagin">
-                            {{-- 15 rows --}}
-                            <option value="15" @if ($global->adminPagin == 15 )
+                        <select class="form-control" id="selectPagination" name="adminPagin">
+
+                            @foreach ([15 , 50 , 100 , 500] as $item)
+                            <option value="{{ $item }}" @if ($global->adminPagin == $item)
                                 selected
                                 @endif>
-                                15 @lang('common.rows')
+                                {{ $item }} @lang('common.rows')
+
+                                @if ($item == 15)
                                 (@lang('common.recommended'))
-                            </option>
-                            {{-- 50 row --}}
-                            <option value="50" @if ($global->adminPagin == 50 )
-                                selected
-                                @endif>
-                                50 @lang('common.rows')
-                            </option>
-                            {{-- 100 rows --}}
-                            <option value="100" @if ($global->adminPagin == 100 )
-                                selected
-                                @endif>
-                                100 @lang('common.rows')
-                            </option>
-                            {{-- 500 rows --}}
-                            <option value="500" @if ($global->adminPagin == 500 )
-                                selected
-                                @endif>
-                                500 @lang('common.rows')
+                                @endif
+
+                                @if ($item == 500)
                                 (@lang('common.notRecommended'))
+                                @endif
+
                             </option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -76,38 +67,28 @@
                     <div class="form-group mb-3">
                         <label for="selectLockoutTime">@lang('common.selectLockoutTime')</label>
                         <select class="form-control" id="selectLockoutTime" name="lockout_time">
-                            {{-- 20 minute --}}
-                            <option value="20" @if (Auth::guard('admin')->user()->lockout_time == 20 )
+                            @foreach ([20 , 40 , 60 , 120 , 0] as $item)
+
+                            <option value="{{ $item }}" @if (Auth::guard('admin')->user()->lockout_time == $item )
                                 selected
                                 @endif>
-                                20 @lang('common.minute')
-                                (@lang('common.recommended'))
-                            </option>
-                            {{-- 30 minute --}}
-                            <option value="30" @if (Auth::guard('admin')->user()->lockout_time == 30 )
-                                selected
-                                @endif>
-                                30 @lang('common.minute')
-                            </option>
-                            {{-- 60 minute --}}
-                            <option value="60" @if (Auth::guard('admin')->user()->lockout_time == 60 )
-                                selected
-                                @endif>
-                                60 @lang('common.minute')
-                            </option>
-                            {{-- 120 minute --}}
-                            <option value="120" @if (Auth::guard('admin')->user()->lockout_time == 120 )
-                                selected
-                                @endif>
-                                120 @lang('common.minute')
-                            </option>
-                            {{-- 0 minute --}}
-                            <option value="0" @if (Auth::guard('admin')->user()->lockout_time == 0 )
-                                selected
-                                @endif>
+                            
+                                @if ($item > 0)
+                                {{ $item }} @lang('common.minute')
+                                @else
                                 @lang('common.never')
+                                @endif
+
+                                @if ($item == 20)
+                                (@lang('common.recommended'))
+                                @endif
+
+                                @if ($item == 0)
                                 (@lang('common.notRecommended'))
+                                @endif
                             </option>
+                            
+                            @endforeach
                         </select>
                     </div>
                 </div>

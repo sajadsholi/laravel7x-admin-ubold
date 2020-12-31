@@ -70,7 +70,7 @@ class SetAdminGlobalVariable
         $global->adminPagin = (!$request->hasCookie('adminPagin')) ? $this->setMyCookie('adminPagin', 15) : $request->cookie('adminPagin');
         $global->adminMode = (!$request->hasCookie('adminMode')) ? $this->setMyCookie('adminMode', 'dark') : $request->cookie('adminMode');
         $global->adminDirection = (!$request->hasCookie('adminDirection')) ? $this->setMyCookie('adminDirection', collect($global->language)->where('is_default', 1)->first()->direction) : $request->cookie('adminDirection');
-        $global->adminAssetPathKey = (!$request->hasCookie('adminAssetPathKey')) ? 'asset-dark' : $request->cookie('adminAssetPathKey');
+        $global->adminAssetPathKey = (!$request->hasCookie('adminAssetPathKey')) ? $this->setMyCookie('adminAssetPathKey', 'asset-dark') : $request->cookie('adminAssetPathKey');
         $global->assetPath = asset("asset") . "/admin/" . $global->adminAssetPathKey . "-" . $global->adminDirection;
         $global->adminResourceLocale = (!$request->hasCookie('adminResourceLocale')) ? $this->setMyCookie('adminResourceLocale', collect($global->language)->where('is_default', 1)->first()->language) : $request->cookie('adminResourceLocale');
         $global->adminDataLocale = (!$request->hasCookie('adminDataLocale')) ? $this->setMyCookie('adminDataLocale', collect($global->language)->where('is_default', 1)->first()->language) : $request->cookie('adminDataLocale');

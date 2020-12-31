@@ -88,9 +88,10 @@ $ver = '1.0.0';
 
                             <div class="row mt-3">
                                 <div class="col-12 text-center">
-                                    2013 - {{ date('Y') }} &copy;<a class="text-blue"
-                                        href="{{ $global->setting->sourceLink }}"
-                                        target="_blanck">{{ $global->setting->sourceName }}</a>
+                                    {{ $global->setting->sourceStartYear ?? '' }} - {{ date('Y') }} &copy;<a
+                                        class="text-blue"
+                                        href="{{ $global->setting->sourceLink ?? 'javascript:void(0);' }}"
+                                        target="_blanck">{{ $global->setting->sourceName ?? '' }}</a>
                                 </div>
                             </div>
                         </div>

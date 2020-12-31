@@ -44,7 +44,7 @@
 
         {{-- right sidebar button --}}
         <li class="dropdown notification-list" data-toggle="tooltip" title="@lang('common.settings')">
-            <a href="javascript:void(0);" class="nav-link right-bar-toggle waves-effect waves-light">
+            <a href="javascript:void(0);" class="nav-link right-bar-toggle waves-effect waves-light text-orange">
                 <i class="fe-settings noti-icon"></i>
             </a>
         </li>
@@ -63,7 +63,8 @@
             <span class="logo-sm">
                 <!-- <span class="logo-sm-text-dark">U</span> -->
                 <img src="{{ $global->setting->logo->path ?? $global->defaultLogo }}"
-                    title="{{ $global->setting->name ?? '' }}" alt="{{ $global->setting->name ?? '' }}" height="24">
+                    title="{{ $global->setting->name ?? '' }}" alt="{{ $global->setting->name ?? '' }}" height="24"
+                    width="24">
             </span>
         </a>
     </div>

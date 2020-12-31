@@ -232,6 +232,7 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
         'Permission' => App\Helpers\Permission::class,
         'Captcha' => App\Helpers\Captcha::class,
+        'Timezone' => App\Helpers\Timezone::class,
 
     ],
 
